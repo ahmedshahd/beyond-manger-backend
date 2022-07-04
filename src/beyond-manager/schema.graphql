@@ -1,0 +1,28 @@
+
+type BeyondManager {
+    id: ID!
+    first_name: String!
+    last_name: String!
+    email: String!
+    invitation_status: String!
+    company_id: Int!
+    invited_by_id: Int!
+    invitation_date: DateTime
+    activation_date: DateTime
+    deactivation_date: DateTime
+    deactivated_by: Int
+    deleted_date: DateTime
+    deleted_by_id: Int
+    password: String!
+    temporary_password: String!
+    created_at: String!
+    updated_at: String
+  }
+
+scalar DateTime
+
+
+  type Query {
+    GetBeyondManagers: [BeyondManager!]!
+    GetBeyondManager(id: ID!): BeyondManager
+  }
