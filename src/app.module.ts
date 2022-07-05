@@ -6,6 +6,7 @@ import { BeyondManagerModule } from './beyond-manager/beyond-manager.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import * as moment from 'moment-timezone';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
 const mocks = {
   Int: () => Math.floor(Math.random() * (100 - 1)) + 1,
@@ -20,13 +21,13 @@ const mocks = {
     GraphQLModule.forRoot<ApolloDriverConfig>({     
       driver: ApolloDriver,
       debug: true,
-      playground: true,
+      playground: false,
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
         outputAs: 'class',
       },
-    
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
       mocks,
     }),
     BeyondManagerModule,
