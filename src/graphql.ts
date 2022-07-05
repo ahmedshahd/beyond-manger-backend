@@ -28,6 +28,8 @@ export class BeyondManager {
 }
 
 export abstract class IQuery {
+    abstract beyondManagerLogin(email?: Nullable<string>, password?: Nullable<string>): BeyondManager | Promise<BeyondManager>;
+
     abstract beyondManagers(limit?: Nullable<number>, offset?: Nullable<number>): BeyondManager[] | Promise<BeyondManager[]>;
 
     abstract beyondManager(id: number): Nullable<BeyondManager> | Promise<Nullable<BeyondManager>>;

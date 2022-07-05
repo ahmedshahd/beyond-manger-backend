@@ -24,6 +24,7 @@ scalar Void
 
 
   type Query {
+    beyondManagerLogin(email: String, password:String): BeyondManager!
     beyondManagers(limit: Int, offset:Int): [BeyondManager!]!
     beyondManager(id: Int!): BeyondManager
     beyondManagerChangePassword(old_password: String, new_password:String, confirm_password: String, isFirstReset:Boolean): Void
