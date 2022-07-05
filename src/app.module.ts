@@ -5,12 +5,15 @@ import { AppService } from './app.service';
 import { BeyondManagerModule } from './beyond-manager/beyond-manager.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
+import * as moment from 'moment-timezone';
 
-// const mocks = {
-//   Int: () => 6,
-//   Float: () => 22.1,
-//   String: () => 'Hello',
-// };
+const mocks = {
+  Int: () => Math.floor(Math.random() * (100 - 1)) + 1,
+  Float: () => Math.random() * (100 - 1) + 1,
+  String: () => (Math.random() + 1).toString(36).substring(7),
+  Void: () => null,
+  DateTime: ()=> moment(1448841600000).tz("Africa/Cairo").format(),
+};
 
 @Module({
   imports: [    
@@ -24,7 +27,7 @@ import { join } from 'path';
         outputAs: 'class',
       },
     
-      mocks:true,
+      mocks,
     }),
     BeyondManagerModule,
     

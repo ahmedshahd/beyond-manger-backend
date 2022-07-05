@@ -1,6 +1,6 @@
 
 type BeyondManager {
-    id: ID!
+    id: Int!
     first_name: String!
     last_name: String!
     email: String!
@@ -20,9 +20,14 @@ type BeyondManager {
   }
 
 scalar DateTime
+scalar Void
 
 
   type Query {
-    GetBeyondManagers: [BeyondManager!]!
-    GetBeyondManager(id: ID!): BeyondManager
+    beyondManagers(limit: Int, offset:Int): [BeyondManager!]!
+    beyondManager(id: Int!): BeyondManager
+    beyondManagerChangePassword(old_password: String, new_password:String, confirm_password: String, isFirstReset:Boolean): Void
+    beyondManagerRequestForgetPassword(email: String): Void
+    beyondManagerVerifyForgetPassword(email: String, temporary_password: String, new_password: String, confirm_password: String): Void
+
   }
