@@ -15,8 +15,8 @@ type BeyondManager {
     deleted_by_id: Int
     password: String!
     temporary_password: String!
-    created_at: String!
-    updated_at: String
+    created_at: DateTime!
+    updated_at: DateTime
   }
 
 scalar DateTime

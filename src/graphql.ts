@@ -23,8 +23,8 @@ export class BeyondManager {
     deleted_by_id?: Nullable<number>;
     password: string;
     temporary_password: string;
-    created_at: string;
-    updated_at?: Nullable<string>;
+    created_at: DateTime;
+    updated_at?: Nullable<DateTime>;
 }
 
 export abstract class IQuery {
