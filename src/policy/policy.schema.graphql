@@ -22,27 +22,27 @@ type Policy {
 }
 
 enum PaymentPlan {
-    Annual
-    SemiAnnual
-    Quarterly
-    Monthly
+    ANNUAL       
+    SEMI_ANNUAL  
+    QUARTERLY    
+    MONTHLY      
 }
 enum Source {
-    SalesPerson
-    MarketingLead
-    ExternalBroker
+    SALES_PERSON    
+    MARKETING_LEAD  
+    EXTERNAL_BROKER 
 }
 enum PolicyType {
-    Individual
-    Corporate
+    INDIVIDUAL 
+    CORPORATE   
 }
 enum IssuingType {
-    NewBusiness
-    Renewal
+    NEW_BUSINESS 
+    RENEWAL    
 }
 enum InsurancePlanType {
-    Readymade
-    Tailored
+    READYMADE
+    TAILORED
 }
 
 type PolicyAndPlans {
