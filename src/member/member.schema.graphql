@@ -1,0 +1,30 @@
+scalar DateTime
+
+enum Gender {
+    Female
+    Male
+}
+
+enum MaritalStatus {
+    Single
+    Married
+    Widowed
+    Divorced
+}
+
+type Member {
+    id: Int!
+    firstName: String!
+    lastName: String!
+    dob: DateTime!
+    mobileNumber: String
+    gender: Gender!
+    address: String
+    profilePictureURL: String
+    martialStatues: MaritalStatus
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+type Query {
+    getMembers: [Member]!
+}

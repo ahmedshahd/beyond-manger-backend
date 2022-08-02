@@ -1,0 +1,15 @@
+scalar DateTime
+type Company {
+  id                          : Int!      
+  name                        : String                           
+  logoURL                     : String
+  taxCardURL                  : String
+  commercialRegistrationURL   : String
+  industryId                    : String!
+  createdAt                   : DateTime        
+  updatedAt                   : DateTime            
+}
+type Query {
+    getCompanies: [Company]!
+    
+  }

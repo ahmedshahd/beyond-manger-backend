@@ -1,0 +1,51 @@
+type Policy {
+    id: Int!
+    insuranceCompanyId: Int!
+    type: PolicyType!
+    issuingType: IssuingType!
+    lineOfBusinessId: Int!
+    tpaId: Int
+    endCustomerId: Int!
+    policyNumber: Int
+    source: Source!
+    paymentPlan: PaymentPlan!
+    startDate: DateTime!
+    endDate: DateTime!
+    insurancePlanType: InsurancePlanType!
+    policyFileURL: String
+    tobFileURL: String
+    policyTotalValue: Float
+    brokagePercentage: Float!
+    salesAgentId: Int!
+    accountMangerId: Int!
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+
+enum PaymentPlan {
+    Annual
+    SemiAnnual
+    Quarterly
+    Monthly
+}
+enum Source {
+    SalesPerson
+    MarketingLead
+    ExternalBroker
+}
+enum PolicyType {
+    Individual
+    Corporate
+}
+enum IssuingType {
+    NewBusiness
+    Renewal
+}
+enum InsurancePlanType {
+    Readymade
+    Tailored
+}
+
+type Query {
+    getPolicies: [Policy]!
+}

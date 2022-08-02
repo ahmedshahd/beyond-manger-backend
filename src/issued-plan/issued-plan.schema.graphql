@@ -1,0 +1,26 @@
+scalar DateTime
+type IssuedPlan {
+    id: Int
+    staffId: Int
+    principleInsuranceId: Int
+    memberId: Int
+    nameOnInsuranceCard: String
+    policyPlaneId: Int
+    startDate: DateTime
+    endDate: DateTime
+    categoryId: Int
+    category: [String!]!
+    subCompany: String
+    relation: Relation
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+enum Relation {
+    Princpal
+    Child
+    Spouse
+    Parent
+}
+type Query {
+    getIssuedPlan: [IssuedPlan]!
+}

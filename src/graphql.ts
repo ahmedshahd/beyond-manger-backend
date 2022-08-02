@@ -7,6 +7,67 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export enum Relation {
+    Princpal = "Princpal",
+    Child = "Child",
+    Spouse = "Spouse",
+    Parent = "Parent"
+}
+
+export enum Gender {
+    Female = "Female",
+    Male = "Male"
+}
+
+export enum MaritalStatus {
+    Single = "Single",
+    Married = "Married",
+    Widowed = "Widowed",
+    Divorced = "Divorced"
+}
+
+export enum PaymentMathod {
+    Cash = "Cash",
+    Cheque = "Cheque",
+    BankTransfer = "BankTransfer",
+    BankDeposit = "BankDeposit",
+    CreditCard = "CreditCard"
+}
+
+export enum Currency {
+    USD = "USD",
+    GBP = "GBP",
+    EGP = "EGP"
+}
+
+export enum PaymentPlan {
+    Annual = "Annual",
+    SemiAnnual = "SemiAnnual",
+    Quarterly = "Quarterly",
+    Monthly = "Monthly"
+}
+
+export enum Source {
+    SalesPerson = "SalesPerson",
+    MarketingLead = "MarketingLead",
+    ExternalBroker = "ExternalBroker"
+}
+
+export enum PolicyType {
+    Individual = "Individual",
+    Corporate = "Corporate"
+}
+
+export enum IssuingType {
+    NewBusiness = "NewBusiness",
+    Renewal = "Renewal"
+}
+
+export enum InsurancePlanType {
+    Readymade = "Readymade",
+    Tailored = "Tailored"
+}
+
 export class BeyondManager {
     id: number;
     first_name: string;
@@ -39,6 +100,172 @@ export abstract class IQuery {
     abstract beyondManagerRequestForgetPassword(email?: Nullable<string>): Nullable<Void> | Promise<Nullable<Void>>;
 
     abstract beyondManagerVerifyForgetPassword(email?: Nullable<string>, temporary_password?: Nullable<string>, new_password?: Nullable<string>, confirm_password?: Nullable<string>): Nullable<Void> | Promise<Nullable<Void>>;
+
+    abstract getCompanies(): Nullable<Company>[] | Promise<Nullable<Company>[]>;
+
+    abstract getIndustry(): Nullable<Industry>[] | Promise<Nullable<Industry>[]>;
+
+    abstract getInsuranceCompany(): Nullable<InsuranceCompany>[] | Promise<Nullable<InsuranceCompany>[]>;
+
+    abstract getIssuedPlan(): Nullable<IssuedPlan>[] | Promise<Nullable<IssuedPlan>[]>;
+
+    abstract getLineOfBusiness(): Nullable<Company>[] | Promise<Nullable<Company>[]>;
+
+    abstract getMembers(): Nullable<Member>[] | Promise<Nullable<Member>[]>;
+
+    abstract getPayment(): Nullable<Payment>[] | Promise<Nullable<Payment>[]>;
+
+    abstract getPolicyPlan(): Nullable<PolicyPlan>[] | Promise<Nullable<PolicyPlan>[]>;
+
+    abstract getPolicyUtilization(): Nullable<PolicyUtilization>[] | Promise<Nullable<PolicyUtilization>[]>;
+
+    abstract getPolicies(): Nullable<Policy>[] | Promise<Nullable<Policy>[]>;
+
+    abstract getTPA(): Nullable<TPA>[] | Promise<Nullable<TPA>[]>;
+}
+
+export class Company {
+    id: number;
+    name?: Nullable<string>;
+    logoURL?: Nullable<string>;
+    taxCardURL?: Nullable<string>;
+    commercialRegistrationURL?: Nullable<string>;
+    industryId: string;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class Industry {
+    id: number;
+    name: string;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class InsuranceCompany {
+    id: number;
+    name: string;
+    taxCardURL?: Nullable<string>;
+    commercialRegistrationURL?: Nullable<string>;
+    industryId: string;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class IssuedPlan {
+    id?: Nullable<number>;
+    staffId?: Nullable<number>;
+    principleInsuranceId?: Nullable<number>;
+    memberId?: Nullable<number>;
+    nameOnInsuranceCard?: Nullable<string>;
+    policyPlaneId?: Nullable<number>;
+    startDate?: Nullable<DateTime>;
+    endDate?: Nullable<DateTime>;
+    categoryId?: Nullable<number>;
+    category: string[];
+    subCompany?: Nullable<string>;
+    relation?: Nullable<Relation>;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class LineOfBusiness {
+    id: number;
+    name: string;
+    brokagePercentage: number;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class Member {
+    id: number;
+    firstName: string;
+    lastName: string;
+    dob: DateTime;
+    mobileNumber?: Nullable<string>;
+    gender: Gender;
+    address?: Nullable<string>;
+    profilePictureURL?: Nullable<string>;
+    martialStatues?: Nullable<MaritalStatus>;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class Payment {
+    id: number;
+    policyId: number;
+    amount: number;
+    currency: Currency;
+    dueDate: DateTime;
+    isInvioced?: Nullable<boolean>;
+    isPaid: boolean;
+    invoicedFileURL: string;
+    paymentMathod?: Nullable<PaymentMathod>;
+    paymentDate?: Nullable<DateTime>;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class PolicyPlan {
+    id: number;
+    name: string;
+    ceiling: string;
+    policyId: number;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class PolicyUtilization {
+    id: number;
+    insuranceId: number;
+    issuedPlanId: number;
+    diagnosisCode?: Nullable<string>;
+    diagnosis?: Nullable<string>;
+    service?: Nullable<string>;
+    providerName?: Nullable<string>;
+    providerType?: Nullable<string>;
+    byReimbursement?: Nullable<boolean>;
+    amount: number;
+    isRejected?: Nullable<boolean>;
+    isValidated?: Nullable<boolean>;
+    isChronic?: Nullable<boolean>;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class Policy {
+    id: number;
+    insuranceCompanyId: number;
+    type: PolicyType;
+    issuingType: IssuingType;
+    lineOfBusinessId: number;
+    tpaId?: Nullable<number>;
+    endCustomerId: number;
+    policyNumber?: Nullable<number>;
+    source: Source;
+    paymentPlan: PaymentPlan;
+    startDate: DateTime;
+    endDate: DateTime;
+    insurancePlanType: InsurancePlanType;
+    policyFileURL?: Nullable<string>;
+    tobFileURL?: Nullable<string>;
+    policyTotalValue?: Nullable<number>;
+    brokagePercentage: number;
+    salesAgentId: number;
+    accountMangerId: number;
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
+}
+
+export class TPA {
+    id: number;
+    name: string;
+    logoURL?: Nullable<string>;
+    taxCardURL?: Nullable<string>;
+    commercialRegistrationURL?: Nullable<string>;
+    categories: string[];
+    createdAt?: Nullable<DateTime>;
+    updatedAt?: Nullable<DateTime>;
 }
 
 export type DateTime = any;

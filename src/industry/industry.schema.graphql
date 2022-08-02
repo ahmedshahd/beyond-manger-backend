@@ -1,0 +1,11 @@
+scalar DateTime
+
+type Industry {
+    id: Int!
+    name: String!
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+type Query {
+    getIndustry: [Industry]!
+}

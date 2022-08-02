@@ -1,0 +1,30 @@
+type Payment {
+    id: Int!
+    policyId: Int!
+    amount: Int!
+    currency: Currency!
+    dueDate: DateTime!
+    isInvioced: Boolean
+    isPaid: Boolean!
+    invoicedFileURL: String!
+    paymentMathod: PaymentMathod
+    paymentDate: DateTime
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+
+enum PaymentMathod {
+    Cash
+    Cheque
+    BankTransfer
+    BankDeposit
+    CreditCard
+}
+enum Currency {
+    USD
+    GBP
+    EGP
+}
+type Query {
+    getPayment: [Payment]!
+}
