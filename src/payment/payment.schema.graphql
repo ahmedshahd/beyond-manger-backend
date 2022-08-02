@@ -14,11 +14,11 @@ type Payment {
 }
 
 enum PaymentMethod {
-    Cash
-    Cheque
-    BankTransfer
-    BankDeposit
-    CreditCard
+    CASH           
+    CHEQUE         
+    BANK_TRANSFER  
+    BANK_DEPOSIT  
+    CREDIT_CARD    
 }
 enum Currency {
     USD
