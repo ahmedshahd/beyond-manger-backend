@@ -45,6 +45,13 @@ enum InsurancePlanType {
     Tailored
 }
 
+type PolicyAndPlans {
+  policy: Policy!
+  policy_plans: [PolicyPlan!]!
+}
+
 type Query {
     getPolicies: [Policy]!
+    getPolicyAndPlans: [PolicyAndPlans]!
 }
+
