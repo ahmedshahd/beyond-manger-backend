@@ -1,0 +1,13 @@
+scalar DateTime
+
+type PolicyPlan {
+    id: Int!
+    name: String!
+    ceiling: String!
+    policyId: Int!
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+type Query {
+    getPolicyPlan: [PolicyPlan]!
+}

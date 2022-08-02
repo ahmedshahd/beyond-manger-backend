@@ -1,0 +1,10 @@
+scalar DateTime
+type LineOfBusiness {
+    id: Int!
+    name: String!
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+type Query {
+    getLineOfBusiness: [Company]!
+}

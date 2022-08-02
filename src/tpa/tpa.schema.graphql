@@ -1,0 +1,15 @@
+scalar DateTime
+
+type TPA {
+    id: Int!
+    name: String!
+    logoURL: String
+    taxCardURL: String
+    commercialRegistrationURL: String
+    categories: [String]
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+type Query {
+    getTPA: [TPA]!
+}

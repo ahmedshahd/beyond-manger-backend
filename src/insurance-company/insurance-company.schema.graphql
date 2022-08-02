@@ -1,0 +1,12 @@
+scalar DateTime
+type InsuranceCompany {
+    id: Int!
+    name: String!
+    taxCardURL: String
+    commercialRegistrationURL: String
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+type Query {
+    getInsuranceCompany: [InsuranceCompany]!
+}

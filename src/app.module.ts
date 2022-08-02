@@ -7,6 +7,17 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import * as moment from 'moment-timezone';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { MemberModule } from './member/member.module';
+import { CompanyModule } from './company/company.module';
+import { PolicyModule } from './policy/policy.module';
+import { PaymentModule } from './payment/payment.module';
+import { TpaModule } from './tpa/tpa.module';
+import { PolicyUtilizationModule } from './policy-utilization/policy-utilization.module';
+import { IssuedPlanModule } from './issued-plan/issued-plan.module';
+import { PolicyPlanModule } from './policy-plan/policy-plan.module';
+import { LineOfBusinessModule } from './line-of-business/line-of-business.module';
+import { IndustryModule } from './industry/industry.module';
+import { InsuranceCompanyModule } from './insurance-company/insurance-company.module';
 
 const mocks = {
   Int: () => Math.floor(Math.random() * (100 - 1)) + 1,
@@ -31,6 +42,17 @@ const mocks = {
       mocks,
     }),
     BeyondManagerModule,
+    MemberModule,
+    CompanyModule,
+    PolicyModule,
+    PaymentModule,
+    TpaModule,
+    PolicyUtilizationModule,
+    IssuedPlanModule,
+    PolicyPlanModule,
+    LineOfBusinessModule,
+    IndustryModule,
+    InsuranceCompanyModule,
     
   
   ],
