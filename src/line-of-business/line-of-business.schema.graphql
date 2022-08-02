@@ -2,7 +2,6 @@ scalar DateTime
 type LineOfBusiness {
     id: Int!
     name: String!
-    brokagePercentage: Float!
     createdAt: DateTime
     updatedAt: DateTime
 }

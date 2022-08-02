@@ -4,7 +4,6 @@ type InsuranceCompany {
     name: String!
     taxCardURL: String
     commercialRegistrationURL: String
-    industryId: String!
     createdAt: DateTime
     updatedAt: DateTime
 }

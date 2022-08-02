@@ -5,7 +5,7 @@ type Company {
   logoURL                     : String
   taxCardURL                  : String
   commercialRegistrationURL   : String
-  industryId                    : String!
+  industryId                  : Int!
   createdAt                   : DateTime        
   updatedAt                   : DateTime            
 }

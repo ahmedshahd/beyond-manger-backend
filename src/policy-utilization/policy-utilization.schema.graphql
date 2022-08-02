@@ -5,7 +5,6 @@ scalar DateTime
 type PolicyUtilization {
   id                : Int!    
   insuranceId       : Int!
-  issuedPlanId      : Int!
   diagnosisCode     : String
   diagnosis         : String
   service           : String

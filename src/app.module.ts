@@ -24,7 +24,7 @@ const mocks = {
   Float: () => Math.random() * (100 - 1) + 1,
   String: () => (Math.random() + 1).toString(36).substring(7),
   Void: () => null,
-  DateTime: ()=> moment(1448841600000).tz("Africa/Cairo").format(),
+  DateTime: ()=> moment().tz("Africa/Cairo").format(),
 };
 
 @Module({

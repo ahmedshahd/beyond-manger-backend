@@ -7,13 +7,13 @@ type Payment {
     isInvioced: Boolean
     isPaid: Boolean!
     invoicedFileURL: String!
-    paymentMathod: PaymentMathod
+    paymentMethod: PaymentMethod
     paymentDate: DateTime
     createdAt: DateTime
     updatedAt: DateTime
 }
 
-enum PaymentMathod {
+enum PaymentMethod {
     Cash
     Cheque
     BankTransfer

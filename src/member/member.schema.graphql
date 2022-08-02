@@ -16,12 +16,13 @@ type Member {
     id: Int!
     firstName: String!
     lastName: String!
+    fullName: String
     dob: DateTime!
     mobileNumber: String
     gender: Gender!
-    address: String
+    martialStatus: MaritalStatus
     profilePictureURL: String
-    martialStatues: MaritalStatus
+    address: String
     createdAt: DateTime
     updatedAt: DateTime
 }

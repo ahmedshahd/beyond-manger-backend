@@ -6,7 +6,7 @@ type TPA {
     logoURL: String
     taxCardURL: String
     commercialRegistrationURL: String
-    categories: [String!]!
+    categories: [String]
     createdAt: DateTime
     updatedAt: DateTime
 }

@@ -1,22 +1,23 @@
 scalar DateTime
 type IssuedPlan {
-    id: Int
+    id: Int!
+    memberId: Int!
     staffId: Int
+    subCompany: String
+    relation: Relation!
     principleInsuranceId: Int
-    memberId: Int
     nameOnInsuranceCard: String
-    policyPlaneId: Int
+    insurance_id: Int!
     startDate: DateTime
     endDate: DateTime
-    categoryId: Int
+    policyId: Int!
+    policyPlanId: Int!
     category: [String!]!
-    subCompany: String
-    relation: Relation
     createdAt: DateTime
     updatedAt: DateTime
 }
 enum Relation {
-    Princpal
+    Principal
     Child
     Spouse
     Parent

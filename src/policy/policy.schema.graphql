@@ -15,9 +15,8 @@ type Policy {
     policyFileURL: String
     tobFileURL: String
     policyTotalValue: Float
-    brokagePercentage: Float!
-    salesAgentId: Int!
-    accountMangerId: Int!
+    accountManagerId: Int!
+    transactionLastUpdatedDate: DateTime
     createdAt: DateTime
     updatedAt: DateTime
 }
