@@ -10,6 +10,6 @@ RUN npm install --production
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 3000
 
 CMD npm run start:dev
