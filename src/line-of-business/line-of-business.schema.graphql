@@ -6,5 +6,6 @@ type LineOfBusiness {
     updatedAt: DateTime
 }
 type Query {
-    getLineOfBusiness: [Company]!
+    listLineOfBusiness: [LineOfBusiness]!
+    listLineOfBusinessDetails(id: Int): LineOfBusiness!
 }

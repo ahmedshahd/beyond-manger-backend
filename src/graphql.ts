@@ -8,7 +8,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export enum Relation {
-    Princpal = "Princpal",
+    Principal = "Principal",
     Child = "Child",
     Spouse = "Spouse",
     Parent = "Parent"
@@ -26,7 +26,7 @@ export enum MaritalStatus {
     Divorced = "Divorced"
 }
 
-export enum PaymentMathod {
+export enum PaymentMethod {
     Cash = "Cash",
     Cheque = "Cheque",
     BankTransfer = "BankTransfer",
@@ -109,7 +109,9 @@ export abstract class IQuery {
 
     abstract getIssuedPlan(): Nullable<IssuedPlan>[] | Promise<Nullable<IssuedPlan>[]>;
 
-    abstract getLineOfBusiness(): Nullable<Company>[] | Promise<Nullable<Company>[]>;
+    abstract listLineOfBusiness(): Nullable<LineOfBusiness>[] | Promise<Nullable<LineOfBusiness>[]>;
+
+    abstract listLineOfBusinessDetails(id?: Nullable<number>): LineOfBusiness | Promise<LineOfBusiness>;
 
     abstract getMembers(): Nullable<Member>[] | Promise<Nullable<Member>[]>;
 
@@ -130,7 +132,7 @@ export class Company {
     logoURL?: Nullable<string>;
     taxCardURL?: Nullable<string>;
     commercialRegistrationURL?: Nullable<string>;
-    industryId: string;
+    industryId: number;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
@@ -147,24 +149,24 @@ export class InsuranceCompany {
     name: string;
     taxCardURL?: Nullable<string>;
     commercialRegistrationURL?: Nullable<string>;
-    industryId: string;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
 
 export class IssuedPlan {
-    id?: Nullable<number>;
+    id: number;
+    memberId: number;
     staffId?: Nullable<number>;
+    subCompany?: Nullable<string>;
+    relation: Relation;
     principleInsuranceId?: Nullable<number>;
-    memberId?: Nullable<number>;
     nameOnInsuranceCard?: Nullable<string>;
-    policyPlaneId?: Nullable<number>;
+    insurance_id: number;
     startDate?: Nullable<DateTime>;
     endDate?: Nullable<DateTime>;
-    categoryId?: Nullable<number>;
+    policyId: number;
+    policyPlanId: number;
     category: string[];
-    subCompany?: Nullable<string>;
-    relation?: Nullable<Relation>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
@@ -172,7 +174,6 @@ export class IssuedPlan {
 export class LineOfBusiness {
     id: number;
     name: string;
-    brokagePercentage: number;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
@@ -181,12 +182,13 @@ export class Member {
     id: number;
     firstName: string;
     lastName: string;
+    fullName?: Nullable<string>;
     dob: DateTime;
     mobileNumber?: Nullable<string>;
     gender: Gender;
-    address?: Nullable<string>;
+    martialStatus?: Nullable<MaritalStatus>;
     profilePictureURL?: Nullable<string>;
-    martialStatues?: Nullable<MaritalStatus>;
+    address?: Nullable<string>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
@@ -200,7 +202,7 @@ export class Payment {
     isInvioced?: Nullable<boolean>;
     isPaid: boolean;
     invoicedFileURL: string;
-    paymentMathod?: Nullable<PaymentMathod>;
+    paymentMethod?: Nullable<PaymentMethod>;
     paymentDate?: Nullable<DateTime>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
@@ -218,7 +220,6 @@ export class PolicyPlan {
 export class PolicyUtilization {
     id: number;
     insuranceId: number;
-    issuedPlanId: number;
     diagnosisCode?: Nullable<string>;
     diagnosis?: Nullable<string>;
     service?: Nullable<string>;
@@ -250,9 +251,8 @@ export class Policy {
     policyFileURL?: Nullable<string>;
     tobFileURL?: Nullable<string>;
     policyTotalValue?: Nullable<number>;
-    brokagePercentage: number;
-    salesAgentId: number;
-    accountMangerId: number;
+    accountManagerId: number;
+    transactionLastUpdatedDate?: Nullable<DateTime>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
@@ -263,7 +263,7 @@ export class TPA {
     logoURL?: Nullable<string>;
     taxCardURL?: Nullable<string>;
     commercialRegistrationURL?: Nullable<string>;
-    categories: string[];
+    categories?: Nullable<Nullable<string>[]>;
     createdAt?: Nullable<DateTime>;
     updatedAt?: Nullable<DateTime>;
 }
