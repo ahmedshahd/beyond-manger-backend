@@ -1,25 +1,21 @@
 scalar DateTime
 
-
-
 type PolicyUtilization {
-  id                : Int!    
-  insuranceId       : Int!
-  diagnosisCode     : String
-  diagnosis         : String
-  service           : String
-  providerName      : String 
-  providerType      : String
-  byReimbursement   : Boolean
-  amount            : Float!
-  isRejected        : Boolean
-  isValidated       : Boolean
-  isChronic         : Boolean
-  createdAt         : DateTime           
-  updatedAt         : DateTime          
-
+    id: Int!
+    insuranceId: Int!
+    diagnosisCode: String
+    diagnosis: String
+    service: String
+    providerName: String
+    providerType: String
+    byReimbursement: Boolean
+    amount: Float!
+    isRejected: Boolean
+    isValidated: Boolean
+    isChronic: Boolean
+    createdAt: DateTime
+    updatedAt: DateTime
 }
 type Query {
     getPolicyUtilization: [PolicyUtilization]!
-    
-  }
+}

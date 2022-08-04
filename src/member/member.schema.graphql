@@ -1,15 +1,15 @@
 scalar DateTime
 
 enum Gender {
-    Female
-    Male
+     FEMALE 
+     MALE   
 }
 
 enum MaritalStatus {
-    Single
-    Married
-    Widowed
-    Divorced
+    SINGLE   
+    MARRIED  
+    WIDOWED  
+    DIVORCED 
 }
 
 type Member {

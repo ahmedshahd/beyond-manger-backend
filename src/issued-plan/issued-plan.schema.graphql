@@ -17,11 +17,11 @@ type IssuedPlan {
     updatedAt: DateTime
 }
 enum Relation {
-    Principal
-    Child
-    Spouse
-    Parent
-}
+    PRINCIPLE     
+    CHILD         
+    SPOUSE
+    PARENT     
+}   
 type Query {
     getIssuedPlan: [IssuedPlan]!
 }
