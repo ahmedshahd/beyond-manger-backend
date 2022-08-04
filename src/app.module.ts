@@ -21,7 +21,7 @@ import { InsuranceCompanyModule } from './insurance-company/insurance-company.mo
 
 const mocks = {
   Int: () => Math.floor(Math.random() * (100 - 1)) + 1,
-  Float: () => Math.random() * (100 - 1) + 1,
+  Float: () => (Math.random() * (100 - 1) + 1).toFixed(2),
   String: () => (Math.random() + 1).toString(36).substring(7),
   Void: () => null,
   DateTime: ()=> moment().tz("Africa/Cairo").format(),

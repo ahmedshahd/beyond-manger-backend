@@ -19,7 +19,16 @@ type Policy {
     transactionLastUpdatedDate: DateTime
     createdAt: DateTime
     updatedAt: DateTime
+    insuranceCompany: InsuranceCompany!
+    lineOfBusiness: LineOfBusiness!
+    tpa: TPA!
+    endCustomer: EndCustomerUnion!
+    totalTransactionsAmount : Int
+    totalIssuedPlansCount: Int
 }
+
+union EndCustomerUnion = Member | Company
+
 
 enum PaymentPlan {
     ANNUAL       
@@ -47,11 +56,12 @@ enum InsurancePlanType {
 
 type PolicyAndPlans {
   policy: Policy!
-  policy_plans: [PolicyPlan!]!
+  policyPlans: [PolicyPlan!]!
 }
 
+
 type Query {
-    getPolicies: [Policy]!
-    getPolicyAndPlans: [PolicyAndPlans]!
+    listAllPolicies: [Policy]!
+    listPolicyAndPlans: [PolicyAndPlans]!
 }
 
