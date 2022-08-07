@@ -1,0 +1,24 @@
+
+type MemberProfileMetaData {
+    id: Int!
+    memberId:Int!
+    member:Member
+    staffId:String
+    age:Int
+    height:Int
+    trs:Int
+    bmi:Int
+    createdAt: DateTime
+    updatedAt: DateTime
+}
+
+
+
+
+
+
+
+type Query {
+    listMemberProfileMetaData: [MemberProfileMetaData]!
+    listMemberProfileMetaDatainfo(id: Int): MemberProfileMetaData
+}
