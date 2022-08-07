@@ -18,6 +18,7 @@ import { PolicyPlanModule } from './policy-plan/policy-plan.module';
 import { LineOfBusinessModule } from './line-of-business/line-of-business.module';
 import { IndustryModule } from './industry/industry.module';
 import { InsuranceCompanyModule } from './insurance-company/insurance-company.module';
+import { MemberMedicalProfileModule } from './member-medical-profile/member-medical-profile.module';
 
 const mocks = {
   Int: () => Math.floor(Math.random() * (100 - 1)) + 1,
@@ -53,6 +54,7 @@ const mocks = {
     LineOfBusinessModule,
     IndustryModule,
     InsuranceCompanyModule,
+    MemberMedicalProfileModule,
     
   
   ],

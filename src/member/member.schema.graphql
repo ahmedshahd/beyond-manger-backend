@@ -27,5 +27,5 @@ type Member {
     updatedAt: DateTime
 }
 type Query {
-    getMembers: [Member]!
+    listMembers: [Member]!
 }
