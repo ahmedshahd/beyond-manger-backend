@@ -11,4 +11,5 @@ type PolicyPlan {
 }
 
 type Query {
+    getAllPolicyPlan: [PolicyPlan]!
 }
