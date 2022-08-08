@@ -19,16 +19,88 @@ type Policy {
     transactionLastUpdatedDate: DateTime
     createdAt: DateTime
     updatedAt: DateTime
-    insuranceCompany: InsuranceCompany!
     lineOfBusiness: LineOfBusiness!
-    tpa: TPA!
+    tpa: TPA
+    insuranceCompany: InsuranceCompany
     endCustomer: EndCustomerUnion!
+    compareWithLastMonth: String
+    payment: [Payment]
+    policyPlan: [PolicyPlan!]!
     totalTransactionsAmount : Int
     totalIssuedPlansCount: Int
+    totalActiveIssuedPlansCount: Int
+    averageClaimSeverity: Float
+    averageClaimFrequency: Float
+    totalClaimsAmount: Float
+    totalTransactionsCount: Int
+    policyGraphMonth: [PolicyGraphMonth]
+
 }
 
 union EndCustomerUnion = Member | Company
 
+type ServiceType {
+  amount: Float!
+  count: Int!
+  percentage: Float!
+}
+
+type Service {
+    inPatient: ServiceType!
+    outPatient: ServiceType!
+}
+
+type ProviderTypeData {
+  name: String!
+  amount: Float!
+  count: Int!
+  percentage: Float!
+}
+
+type ProviderType {
+    providerType: [ProviderTypeData!]!
+    totalCount: Int!
+}
+
+type ProviderData {
+  name: String!
+  amount: Float!
+  count: Int!
+  percentage: Float!
+}
+
+type Provider {
+    provider: [ProviderData!]!
+    totalCount: Int!
+}
+
+type SubCompanyType {
+  name: String!
+  city: String
+  amount: Float!
+  count: Int!
+  percentage: Float!
+}
+
+type SubCompany {
+  subCompany: [SubCompanyType!]!
+  totalCount: Int!
+}
+
+type PolicyGraphMonth {
+  month: String
+  value: Float
+}
+
+type MemberType {
+  member: [Member!]!
+  totalCount: Int!
+}
+
+type PolicyPlanType {
+  policyPlan: [PolicyPlan]
+  totalCount: Int!
+}
 
 enum PaymentPlan {
     ANNUAL       
@@ -54,14 +126,51 @@ enum InsurancePlanType {
     TAILORED
 }
 
-type PolicyAndPlans {
-  policy: Policy!
-  policyPlans: [PolicyPlan!]!
+enum PolicyStatus {
+    ACTIVE
+    INACTIVE
+}
+
+enum PolicyUtilizationType {
+    CLAIM
+    TRANSACTION
+}
+
+enum ServiceTypeEnum {
+    INPATIENT
+    OUTPATIENT
+}
+
+input DateRange{
+  dateFrom: DateTime
+  dateTo: DateTime
+}
+
+input PolicyFilterInput {
+  status: [PolicyStatus!]!
+}
+
+input PolicyUtilizationFilterInput {
+  isChronic: [Boolean]
+  isValidated: [Boolean]
+  isRejected: [Boolean]
+  byReimbursement: [Boolean]
+  serviceType: [ServiceTypeEnum]
+  gender: [Gender]
+  dateRange: DateRange
 }
 
 
 type Query {
-    listAllPolicies: [Policy]!
-    listPolicyAndPlans: [PolicyAndPlans]!
+    listAllPolicies (filter: PolicyFilterInput, search:String): [Policy]!
+    listPolicyDetailsByPolicyId (policyId: Int!): Policy!
+    listAllServicesByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): Service!
+    listAllProviderTypesByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): ProviderType!
+    listAllProvidersByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput, search:String): Provider!
+    listAllSubCompaniesByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): SubCompany!
+    listAllPolicyUtilizationsByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): Policy!
+    listAllMembersByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput, search:String): MemberType!
+    listAllPolicyPlansByPolicyId (policyId: Int!): [PolicyPlanType]!
+
 }
 
