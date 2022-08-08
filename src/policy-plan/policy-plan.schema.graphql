@@ -7,7 +7,9 @@ type PolicyPlan {
     policyId: Int!
     createdAt: DateTime
     updatedAt: DateTime
+    totalActiveIssuedPlansCount: Int
 }
+
 type Query {
-    getPolicyPlan: [PolicyPlan]!
+    getAllPolicyPlan: [PolicyPlan]!
 }
