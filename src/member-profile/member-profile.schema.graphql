@@ -2,7 +2,7 @@
 type MemberProfileMetaData {
     id: Int!
     memberId:Int!
-    member:Member
+    member: Member
     staffId:String
     age:Int
     height:Int
@@ -12,17 +12,19 @@ type MemberProfileMetaData {
     updatedAt: DateTime
 }
 
-type MemberProfileMedicalInfo{
+type MemberProfileMedicalInfo {
     id: Int!,
     memberId:Int!,
     chronicDiseases: [Disease],
     chronicMedicines:[Medicines]
 }
+
 type Disease {
     id:Int!
     name:String!
     DiagnosisDate:DateTime
 }
+
 type Medicines {
     id:Int!
     name:String!
@@ -32,7 +34,20 @@ type Medicines {
 
 }
 
+input ActiveIssuedPlanInput {
+    startDate: DateTime
+    endDate: DateTime
+}
 
+input SortIssuedPlanInput {
+    endDate: DateTime!
+    order: SortOrder = DESC
+}
+
+enum SortOrder{
+    DESC
+    ASC
+}
 
 
 
