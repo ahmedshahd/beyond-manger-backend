@@ -44,14 +44,14 @@ type Medicines {
 
 
 input ActiveIssuedPlanInput {
-    startDate: DateTime
-    endDate: DateTime
+    startDate: DateTime!
+    endDate: DateTime!
 }
 
 input SortIssuedPlanInput{
-    endDate: DateTime!
-    order: SortOrder = DESC
+    endDate: SortOrder = DESC
 }
+
 enum SortOrder{
     DESC
     ASC
@@ -64,7 +64,7 @@ type Query {
     listMemberChronicDiseaseByMemberId(memberId:Int!) : [Disease]
     listMemberChronicMedicinesByMemberId(memberId:Int!) : [Medicines]
     listMemberProfileMedicalInfoByMemberId(memberId:Int!): MemberProfileMedicalInfo!
-    listMemberActiveIssuedPlane(memberProfileId: Int!, filter: ActiveIssuedPlanInput, sort: SortIssuedPlanInput ): [MemberProfileInsuranceInfo!]!
-    istMemberActiveIssuedPlaneDetails(memberProfileId: Int!, issuedPlanId:Int!): MemberProfileInsuranceInfo!
+    listMemberActiveIssuedPlan(memberProfileId: Int!, filter: ActiveIssuedPlanInput, sort: SortIssuedPlanInput ): [MemberProfileInsuranceInfo!]!
+    listMemberActiveIssuedPlanDetails(memberProfileId: Int!, issuedPlanId:Int!): MemberProfileInsuranceInfo!
 }
 
