@@ -12,7 +12,25 @@ type MemberProfileMetaData {
     updatedAt: DateTime
 }
 
+type MemberProfileMedicalInfo{
+    id: Int!,
+    memberId:Int!,
+    chronicDiseases: [Disease],
+    chronicMedicines:[Medicines]
+}
+type Disease {
+    id:Int!
+    name:String!
+    DiagnosisDate:DateTime
+}
+type Medicines {
+    id:Int!
+    name:String!
+    DateOfUse:DateTime
+    imageOfMedicine: String
+    price: Int!
 
+}
 
 
 
@@ -21,4 +39,7 @@ type MemberProfileMetaData {
 type Query {
     listMemberProfileMetaData: [MemberProfileMetaData]!
     listMemberProfileMetaDatainfo(id: Int): MemberProfileMetaData
+    listMemberChronicDisease(memberId:Int!) : [Disease]
+    listMemberChronicMedicines(memberId:Int!) : [Medicines]
+    listMemberProfileMedicalInfo(memberId:Int!): MemberProfileMedicalInfo!
 }
