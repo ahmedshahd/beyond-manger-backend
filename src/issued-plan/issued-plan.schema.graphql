@@ -7,11 +7,20 @@ type IssuedPlan {
     relation: Relation!
     principleInsuranceId: Int
     nameOnInsuranceCard: String
-    insurance_id: Int!
+    insuranceId: Int!
+    lineOfBusinessId: Int
+    lineOfBusiness: LineOfBusiness
+    tpaId: Int
+    tpa:TPA
+    insuranceCompanyId:Int
+    insuranceCompany: InsuranceCompany
+    imageOnInsuranceCardURL:String
+    totalUtilizationAmount: Int
     startDate: DateTime
     endDate: DateTime
     policyId: Int!
     policyPlanId: Int!
+    policyPlan: [PolicyPlan!]!
     category: [String!]!
     createdAt: DateTime
     updatedAt: DateTime
