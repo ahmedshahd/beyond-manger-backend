@@ -2,7 +2,7 @@
 type MemberProfileMetaData {
     id: Int!
     memberId:Int!
-    member:Member
+    member: Member
     staffId:String
     age:Int
     height:Int
@@ -12,13 +12,33 @@ type MemberProfileMetaData {
     updatedAt: DateTime
 }
 
+type MemberProfileInsuranceInfo {
+    id:Int!
+    memberId: Int!
+    issuedPlanId:Int
+    issuedPlan: [IssuedPlan!]!
 
+}
 
+input ActiveIssuedPlanInput {
+    startDate: DateTime
+    endDate: DateTime
+}
 
+input SortIssuedPlanInput{
+    endDate: DateTime!
+    order: SortOrder = DESC
+}
+enum SortOrder{
+    DESC
+    ASC
+}
 
 
 
 type Query {
     listMemberProfileMetaData: [MemberProfileMetaData]!
-    listMemberProfileMetaDatainfo(id: Int): MemberProfileMetaData
+    listMemberProfileMetaDatainfo(memberProfileId: Int!): MemberProfileMetaData!
+    listMemberActiveIssuedPlane(memberProfileId: Int!, filter: ActiveIssuedPlanInput, sort: SortIssuedPlanInput ): [MemberProfileInsuranceInfo!]!
+    istMemberActiveIssuedPlaneDetails(memberProfileId: Int!, issuedPlanId:Int!): MemberProfileInsuranceInfo!
 }
