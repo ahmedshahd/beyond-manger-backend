@@ -161,15 +161,15 @@ input PolicyUtilizationFilterInput {
 
 
 type Query {
-    listAllPolicies (filter: PolicyFilterInput, search:String): [Policy]!
+    listAllPoliciesByCompanyId (companyId: Int!, filter: PolicyFilterInput, search:String, offset: Int, limit: Int): [Policy]!
     listPolicyDetailsByPolicyId (policyId: Int!): Policy!
     listAllServicesByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): Service!
     listAllProviderTypesByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): ProviderType!
-    listAllProvidersByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput, search:String): Provider!
+    listAllProvidersByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput, search:String, offset: Int, limit: Int): Provider!
     listAllSubCompaniesByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): SubCompany!
     listAllPolicyUtilizationsByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): Policy!
-    listAllMembersByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput, search:String): MemberType!
-    listAllPolicyPlansByPolicyId (policyId: Int!): [PolicyPlanType]!
+    listAllMembersByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput, search:String, offset: Int, limit: Int): MemberType!
+    listAllPolicyPlansByPolicyId (policyId: Int!, offset: Int, limit: Int): [PolicyPlanType]!
 
 }
 
