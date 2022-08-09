@@ -3,7 +3,6 @@ type MemberProfileMetaData {
     id: Int!
     memberId:Int!
     member: Member
-    staffId:String
     age:Int
     height:Int
     trs:Int
