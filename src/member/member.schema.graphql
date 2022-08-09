@@ -49,5 +49,5 @@ input MemberFilterInput {
 type Query {
     listMembers:[Member!]!
     listMemberById(memberId:Int!):Member!
-    listAllMembersByPolicyId (policyId: Int!, filter: MemberFilterInput): [Member]!
+    listAllMembersByPolicyId (policyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): [Member]!
 }
