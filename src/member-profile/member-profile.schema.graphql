@@ -39,7 +39,7 @@ type Medicines {
 type Query {
     listMemberProfileMetaData: [MemberProfileMetaData]!
     listMemberProfileMetaDatainfo(id: Int): MemberProfileMetaData
-    listMemberChronicDisease(memberId:Int!) : [Disease]
-    listMemberChronicMedicines(memberId:Int!) : [Medicines]
-    listMemberProfileMedicalInfo(memberId:Int!): MemberProfileMedicalInfo!
+    listMemberChronicDiseaseByMemberId(memberId:Int!) : [Disease]
+    listMemberChronicMedicinesByMemberId(memberId:Int!) : [Medicines]
+    listMemberProfileMedicalInfoByMemberId(memberId:Int!): MemberProfileMedicalInfo!
 }
