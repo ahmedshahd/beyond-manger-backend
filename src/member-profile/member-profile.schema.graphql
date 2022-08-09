@@ -12,6 +12,15 @@ type MemberProfileMetaData {
     updatedAt: DateTime
 }
 
+type MemberProfileInsuranceInfo {
+    id:Int!
+    memberId: Int!
+    issuedPlanId:Int
+    issuedPlan: [IssuedPlan!]!
+
+}
+
+
 type MemberProfileMedicalInfo {
     id: Int!,
     memberId:Int!,
@@ -34,27 +43,29 @@ type Medicines {
 
 }
 
+
 input ActiveIssuedPlanInput {
     startDate: DateTime
     endDate: DateTime
 }
 
-input SortIssuedPlanInput {
+input SortIssuedPlanInput{
     endDate: DateTime!
     order: SortOrder = DESC
 }
-
 enum SortOrder{
     DESC
     ASC
 }
 
 
-
 type Query {
     listMemberProfileMetaData: [MemberProfileMetaData]!
-    listMemberProfileMetaDatainfo(id: Int): MemberProfileMetaData
+    listMemberProfileMetaDatainfo(memberProfileId: Int!): MemberProfileMetaData!
     listMemberChronicDiseaseByMemberId(memberId:Int!) : [Disease]
     listMemberChronicMedicinesByMemberId(memberId:Int!) : [Medicines]
     listMemberProfileMedicalInfoByMemberId(memberId:Int!): MemberProfileMedicalInfo!
+    listMemberActiveIssuedPlane(memberProfileId: Int!, filter: ActiveIssuedPlanInput, sort: SortIssuedPlanInput ): [MemberProfileInsuranceInfo!]!
+    istMemberActiveIssuedPlaneDetails(memberProfileId: Int!, issuedPlanId:Int!): MemberProfileInsuranceInfo!
 }
+
