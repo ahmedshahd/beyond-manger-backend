@@ -34,6 +34,9 @@ const mocks = {
       driver: ApolloDriver,
       debug: true,
       playground: false,
+      cors: {
+        origin: true
+      },
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
