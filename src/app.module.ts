@@ -35,8 +35,9 @@ const mocks = {
       debug: true,
       playground: false,
       cors: {
-        origin: true
-      },
+        "origin": "https://studio.apollographql.com",
+        "credentials": true
+      }, 
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
