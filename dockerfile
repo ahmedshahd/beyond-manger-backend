@@ -1,14 +1,14 @@
 FROM node:14-alpine AS node_builder
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
-WORKDIR /home/node/app
+COPY ./package.json /usr/src/service/package.json
+COPY ./package-lock.json /usr/src/service/package-lock.json
 
-COPY ["package.json", "package-lock.json*", "./"]
+WORKDIR /usr/src/service
 
-RUN npm install --production
+RUN npm install
 
-COPY . .
+COPY . /usr/src/service
 
 EXPOSE 4000
 
