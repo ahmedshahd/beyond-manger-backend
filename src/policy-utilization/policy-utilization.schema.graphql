@@ -16,7 +16,3 @@ type PolicyUtilization {
     createdAt: DateTime
     updatedAt: DateTime
 }
-
-type Query {
-    getPolicyUtilization: [PolicyUtilization]!
-}

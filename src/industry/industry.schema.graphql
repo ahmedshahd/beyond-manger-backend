@@ -6,6 +6,3 @@ type Industry {
     createdAt: DateTime
     updatedAt: DateTime
 }
-type Query {
-    getIndustry: [Industry]!
-}

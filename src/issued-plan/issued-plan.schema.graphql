@@ -30,7 +30,4 @@ enum Relation {
     CHILD         
     SPOUSE
     PARENT     
-}   
-type Query {
-    getIssuedPlan: [IssuedPlan]!
 }

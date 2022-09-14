@@ -9,7 +9,3 @@ type Company {
   createdAt                   : DateTime        
   updatedAt                   : DateTime            
 }
-type Query {
-    getCompanies: [Company]!
-    
-  }

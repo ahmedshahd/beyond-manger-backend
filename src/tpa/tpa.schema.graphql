@@ -10,6 +10,5 @@ type TPA {
     createdAt: DateTime
     updatedAt: DateTime
 }
-type Query {
-    getTPA: [TPA]!
-}
+
+

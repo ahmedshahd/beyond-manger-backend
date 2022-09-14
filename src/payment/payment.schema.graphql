@@ -25,6 +25,3 @@ enum Currency {
     GBP
     EGP
 }
-type Query {
-    getPayment: [Payment]!
-}

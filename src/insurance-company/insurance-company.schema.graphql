@@ -7,6 +7,3 @@ type InsuranceCompany {
     createdAt: DateTime
     updatedAt: DateTime
 }
-type Query {
-    getInsuranceCompany: [InsuranceCompany]!
-}

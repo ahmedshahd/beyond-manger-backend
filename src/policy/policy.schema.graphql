@@ -169,7 +169,7 @@ type Query {
     listAllSubCompaniesByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): SubCompany!
     listAllPolicyUtilizationsByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput): Policy!
     listAllMembersFromUtilizationByPolicyId (policyId: Int!, policyUtilizationType: PolicyUtilizationType!, filter: PolicyUtilizationFilterInput, search:String, offset: Int, limit: Int): MemberType!
-    listAllPolicyPlansByPolicyId (policyId: Int!, offset: Int, limit: Int): [PolicyPlanType]!
+    listAllPolicyPlansByPolicyId (policyId: Int!, offset: Int, limit: Int): PolicyPlanType!
 
 }
 

@@ -59,7 +59,6 @@ enum SortOrder{
 
 
 type Query {
-    listMemberProfileMetaData: [MemberProfileMetaData]!
     listMemberProfileMetaDatainfo(memberProfileId: Int!): MemberProfileMetaData!
     listMemberChronicDiseaseByMemberId(memberId:Int!) : [Disease]
     listMemberChronicMedicinesByMemberId(memberId:Int!) : [Medicines]
