@@ -44,10 +44,16 @@ input MemberFilterInput {
   age: [AgeRange]
 }
 
+type MemberType2 {
+  member: [Member!]!
+  totalCount: Int!
+}
+
+
 
 
 type Query {
-    listAllMembersByCompanyId (companyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): [Member]!
+    listAllMembersByCompanyId (companyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): MemberType2!
     listMemberById(memberId:Int!):Member!
-    listAllMembersByPolicyId (policyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): [Member]!
+    listAllMembersByPolicyId (policyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): MemberType2!
 }
