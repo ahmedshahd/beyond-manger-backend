@@ -47,6 +47,7 @@ input MemberFilterInput {
 
 
 type Query {
+    listAllMembersByCompanyId (companyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): [Member]!
     listMemberById(memberId:Int!):Member!
     listAllMembersByPolicyId (policyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): [Member]!
 }

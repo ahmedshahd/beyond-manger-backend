@@ -6,7 +6,7 @@ import { BeyondManagerModule } from './beyond-manager/beyond-manager.module';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import * as moment from 'moment-timezone';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { ApolloServerPluginLandingPageLocalDefault, ApolloServerPluginLandingPageProductionDefault, ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core';
 import { MemberModule } from './member/member.module';
 import { CompanyModule } from './company/company.module';
 import { PolicyModule } from './policy/policy.module';
@@ -30,22 +30,23 @@ const mocks = {
 
 @Module({
   imports: [    
-    GraphQLModule.forRoot<ApolloDriverConfig>({     
+    GraphQLModule.forRootAsync<ApolloDriverConfig>({     
       driver: ApolloDriver,
-      debug: true,
-      playground: false,
-      cors: {
-        "origin": "https://studio.apollographql.com",
-        "credentials": true
-      }, 
+      useFactory: () => ({
       typePaths: ['./**/*.graphql'],
       definitions: {
         path: join(process.cwd(), 'src/graphql.ts'),
         outputAs: 'class',
       },
-      plugins: [ApolloServerPluginLandingPageLocalDefault()],
+      playground: (process.env.NODE_ENV === "production") ? true : false,
+      introspection: true ,
+      csrfPrevention: true,
+      cache: "bounded",
+      plugins: [
+        (process.env.NODE_ENV !== "production") ? ApolloServerPluginLandingPageLocalDefault() : {},
+      ],
       mocks,
-    }),
+    })}),
     BeyondManagerModule,
     MemberModule,
     CompanyModule,
@@ -65,4 +66,5 @@ const mocks = {
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+}
