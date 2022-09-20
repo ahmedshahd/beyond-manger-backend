@@ -41,7 +41,7 @@ input MemberFilterInput {
   policyStatus: [PolicyStatus]
   relation:[Relation]
   gender: [Gender]
-  age: [AgeRange]
+  age: AgeRange
 }
 
 type MemberType2 {
@@ -53,7 +53,7 @@ type MemberType2 {
 
 
 type Query {
-    listAllMembersByCompanyId (companyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): MemberType2!
+    listAllMembersByCompanyId (companyId: Int!, filter: MemberFilterInput, search:String, offset: Int, limit: Int): MemberType2!
     listMemberById(memberId:Int!):Member!
-    listAllMembersByPolicyId (policyId: Int!, filter: MemberFilterInput, offset: Int, limit: Int): MemberType2!
+    listAllMembersByPolicyId (policyId: Int!, filter: MemberFilterInput, search:String, offset: Int, limit: Int): MemberType2!
 }
